@@ -214,4 +214,25 @@ async function sendAuditLog(guild, embed) {
         embeds: [embed]
     });
 }
+client.on('guildMemberAdd', async (member) => {
+    await sendAuditLog(
+        member.guild,
+        new EmbedBuilder()
+            .setColor('Green')
+            .setTitle('🟢 Member Joined')
+            .setDescription(`${member.user} joined the server.`)
+            .setTimestamp()
+    );
+});
+
+client.on('guildMemberRemove', async (member) => {
+    await sendAuditLog(
+        member.guild,
+        new EmbedBuilder()
+            .setColor('Red')
+            .setTitle('🔴 Member Left')
+            .setDescription(`${member.user.tag} left the server.`)
+            .setTimestamp()
+    );
+});
 client.login(process.env.TOKEN)
