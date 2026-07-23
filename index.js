@@ -203,5 +203,15 @@ client.on('messageCreate', async (message) => {
         });
     }
 });
+const AUDIT_LOG_CHANNEL_ID = '1527839696196079764';
 
+async function sendAuditLog(guild, embed) {
+    const logChannel = guild.channels.cache.get(AUDIT_LOG_CHANNEL_ID);
+
+    if (!logChannel) return;
+
+    await logChannel.send({
+        embeds: [embed]
+    });
+}
 client.login(process.env.TOKEN)
