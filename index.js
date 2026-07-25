@@ -150,6 +150,7 @@ client.on('interactionCreate', async (interaction) => {
 
 
 client.on('guildMemberAdd', async (member) => {
+    console.log(`JOIN TEST: ${member.user.tag}`);
     const welcomeChannel = member.guild.channels.cache.get('1530566105792254084');
 
     if (!welcomeChannel) return;
