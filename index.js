@@ -147,6 +147,50 @@ client.on('interactionCreate', async (interaction) => {
     }
 });
 
+
+
+client.on('guildMemberAdd', async (member) => {
+    const welcomeChannel = member.guild.channels.cache.get('1530566105792254084');
+
+    if (!welcomeChannel) return;
+
+    const embed = new EmbedBuilder()
+        .setColor(0xFF0000)
+        .setTitle(`Standby for ${member.user.username}’s Arrival.`)
+        .setThumbnail('https://cdn.discordapp.com/attachments/1530429717063274577/1530568841145618623/image.png')
+        .setDescription(`
+Standby for ${member}’s Arrival.
+
+╭━━━━━━━━━━━━━━━━━━╮
+        WELCOME
+      THE ELYSIUM
+╰━━━━━━━━━━━━━━━━━━╯
+
+You have entered **THE ELYSIUM**.
+
+A place built on loyalty, discipline, and ambition.
+Every member carries the name and contributes to the legacy.
+
+「 START HERE 」
+
+✦ Read the rules
+✦ Check the information
+✦ Choose your path
+✦ Prepare for your journey
+
+Your story begins now.
+
+— THE ELYSIUM
+        `)
+        .setImage('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDlxd2Nmcm02enBxcGF1dTVtM2QxaWszZG0zbjVkczN2cGdkcnkzcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kjMZRr2pgdkTEdLjmK/giphy.gif')
+        .setFooter({ text: '© THE ELYSIUM' })
+        .setTimestamp();
+
+    await welcomeChannel.send({
+        embeds: [embed]
+    });
+});
+
 client.on('messageCreate', async (message) => {
     if (message.author.bot) return;
     const allowedChannelId = botConfig.get('channelId') || config.channelId;
