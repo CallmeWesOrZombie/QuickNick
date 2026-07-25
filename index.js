@@ -82,7 +82,7 @@ client.once("ready", async () => {
     }
 });
 
-const LOG_CHANNEL_NAME = 'nickname-logs';
+const LOG_CHANNEL_NAME = '丨ɴɪᴄᴋɴᴀᴍᴇ-ʟᴏɢs';
 
 function validateNickname(nick) {
     if (!nick) return { valid: false, reason: 'Nickname cannot be empty.' };
